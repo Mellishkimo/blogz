@@ -10,12 +10,27 @@
     </head>
 <body>
     <nav>
-        <a href="/index">Index of Blog Users</a>
+        <a href="/">Index of Blog Users</a>
         <a href="/blog">List of Blog Posts</a>
         <a href="/newpost">Add a Blog Post</a>
         <a href="/login">Login to Blogz</a>
         <a href="/logout">Logout of Blogz</a>
     </nav>
+
+    <div class='container'>
+        <br>
+        <br>
+        <h1>{{header}}</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+        </ul>
+        {% endwith %}
+
+
 
     {% block content %}
     {% endblock %}
